@@ -1,14 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 
-const Dashboard=()=>{
-
-
-    return (
-        <>
-        </>
-
+export const Dashboard=()=>{
+    const[strike, setStrike] = useState(0);
+    const[balls, setBalls] = useState(0);
+    
+    return(
+        [strike, setStrike, balls, setBalls]
+        
     )
 }
-
-export default Display

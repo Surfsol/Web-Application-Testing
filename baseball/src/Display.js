@@ -1,32 +1,44 @@
 import React, {useState} from 'react'
+import {Dashboard} from './Dashboard'
 
 
 
-const Display=()=>{
-    const[strike, setStrike] = useState(0);
-     
-
-    const strikeClick = () => {
+export const strikeClick = strike => {
         if (strike < 3){
-        setStrike(strike + 1)
+        return strike + 1
         } else {
         setStrike(0);
         setBalls(0)
         }
     }
 
+const Display=()=>{
+   const[strike, setStrike, balls, setBalls]=Dashboard()
+     console.log(strike)
+
+    const strikeClick = () => {
+        if (strike < 3){
+        return strike + 1
+        } else {
+        setStrike(0);
+        setBalls(0)
+        }
+    }
+    
+
     const foulClick = () => {
         if (strike < 2){
             setStrike(strike + 1)
+            return strike + 1
         } else{
             setStrike(strike + 0)
         }
     }
 
-    const[balls, setBalls] = useState(0);
+    //const[balls, setBalls] = useState(0);
 
     const ballsClick = () => {
-        if(balls < 3){
+        if(balls < 1){
         setBalls(balls + 1)
         } else {
         setBalls(0);
@@ -48,10 +60,11 @@ const Display=()=>{
         <div>
             <h3>Strikes:{strike}</h3>
         </div>
-        
         <div> 
-            <button onClick={strikeClick}>Strike</button>
+            <button onClick={() => setStrike(strikeClick(strike))}>Strikes</button>
+            
         </div>
+        
         <div> 
             <button onClick={foulClick}>Foul Ball</button>
         </div>
